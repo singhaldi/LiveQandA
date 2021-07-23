@@ -22,6 +22,15 @@ const onSubmit = () => {
 
 };
 
+const voteButtonClicked = (key, voteCount) => {
+  console.log("button clicked!")
+  console.log(key)
+  // TODO: increment vote count in db
+  firebase.database().ref(key).update({
+    votes: voteCount + 1
+  })
+}
+
 const questionRef = firebase.database().ref();
 questionRef.on('value', (snapshot) => {
     while (questionListSelector.firstChild) {
@@ -41,9 +50,16 @@ questionRef.on('value', (snapshot) => {
       questionSelector.classList.add("column");
       let voteSelector = document.createElement("div");
       voteSelector.classList.add("column");
+      let voteButton = document.createElement("button");
+      voteButton.setAttribute("id", key);
+      voteButton.innerHTML = "Upvote";
+      voteButton.addEventListener("click", () => {
+        voteButtonClicked(key, voteCount);
+      });
       questionContainer.appendChild(topicSelector);
       questionContainer.appendChild(questionSelector);
       questionContainer.appendChild(voteSelector);
+      questionContainer.appendChild(voteButton);
       questionListSelector.appendChild(questionContainer);
       topicSelector.innerHTML = topicText;
       questionSelector.innerHTML = questionText;
