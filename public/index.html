@@ -9,7 +9,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
     />
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
      <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script defer src="/__/firebase/8.7.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
@@ -49,6 +49,17 @@
             placeholder="Enter Question Here!"
           />
           <button id="submit" class="button is-success is-large" onclick="onSubmit()">Submit</button>
+        </div>
+        <div class="columns">
+          <div class="column">
+            Topic
+          </div>
+          <div class="column">
+            Question
+          </div>
+          <div class="column">
+            Votes
+          </div>
         </div>
       </section>
       <section id="questionList">
