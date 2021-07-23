@@ -1,3 +1,11 @@
 .hidden {
   display: none;
 }
+
+.title{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.subtitle{
+    font-family: "Monaco", monospace;
+}
