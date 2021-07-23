@@ -9,7 +9,8 @@ const onSubmit = () => {
   console.log(inputSelector.value);
   const payload = {
     topic: topicSelector.value,
-    question: inputSelector.value
+    question: inputSelector.value,
+    votes: 0,
   };
   console.log(payload);
   firebase
@@ -30,7 +31,7 @@ questionRef.on('value', (snapshot) => {
     for (let key in data) {
       const topicText = data[key].topic;
       const questionText = data[key].question;
-      // const voteCount = data[key].votes;
+      const voteCount = data[key].votes;
       
       let questionContainer = document.createElement("div");
       questionContainer.classList.add("columns");
@@ -46,6 +47,6 @@ questionRef.on('value', (snapshot) => {
       questionListSelector.appendChild(questionContainer);
       topicSelector.innerHTML = topicText;
       questionSelector.innerHTML = questionText;
-      voteSelector.innerHTML = 0;
+      voteSelector.innerHTML = voteCount;
     }
 })
